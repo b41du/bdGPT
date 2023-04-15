@@ -4,8 +4,8 @@ venv/
 unused/
 
 keyword_list/*.txt
-images/uploads/*.jpg
-images/uploads/*.png
-images/uploads/*.jpeg
+images/uploads/**/*.jpg
+images/uploads/**/*.png
+images/uploads/**/*.jpeg
 
 __pycache__/
