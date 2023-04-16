@@ -1,4 +1,4 @@
-from config import images_default_path, images_custom_path, img_destination_path, font_path
+from config import images_default_path, img_path_web_relative, images_custom_path, img_destination_path, font_path
 from PIL import Image, ImageDraw, ImageFont
 from datetime import datetime
 import random
@@ -46,7 +46,7 @@ class ImgHandler:
             draw = ImageDraw.Draw(img)
             font_ = ImageFont.truetype(self.font, 60, encoding="unic")
             draw.text(xy=(w/2, h/2), text=self.get_text(keyword), font=font_, anchor='mm', fill='black')
-            dynamic_path = datetime.now().strftime('%Y/%m/%d/')
+            dynamic_path = img_path_web_relative.format(datetime.now().strftime('%Y/%m/%d/'))
             filename = self.generate_filename(keyword)
             save_path = self.get_full_path(dynamic_path) + filename
             img.save(save_path)
