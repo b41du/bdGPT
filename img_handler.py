@@ -28,7 +28,7 @@ class ImgHandler:
 
     def generate_filename(self, keyword):
         now_ = datetime.now()
-        filename = '{}-{}{}'.format(str(hash(keyword)), now_.strftime('%Y%m%d_%H%M%S'), '.jpg')
+        filename = '{}_{}{}'.format(now_.strftime('%Y%m%d_%H%M%S'), str(hash(keyword)), '.jpg')
         return filename
 
     def get_full_path(self, dynamic_path):
