@@ -52,7 +52,7 @@ class ImgHandler:
             img.save(save_path)
             
             if glob.glob(save_path):
-                return '/{}{}'.format(dynamic_path, filename)
+                return '{}{}'.format(dynamic_path, filename)
 
         except Exception as e:
             logging.error(str(e))
