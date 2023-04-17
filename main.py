@@ -17,7 +17,8 @@ class Main:
     contents = []
 
     def __init__(self):
-        self.keywords = KyHandler().keywords
+        self.khandler = KyHandler()
+        self.keywords = self.khandler.keywords
         self.GPT = GPT()
         self.img = ImgHandler()
 
@@ -82,6 +83,7 @@ class Main:
             db.table('zbp_post').insert(
                 self.contents
             )
+            self.khandler.save_keyword()
         # for content in self.GPT.contens:
         #     pass
 
