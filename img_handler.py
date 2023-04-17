@@ -33,7 +33,7 @@ class ImgHandler:
 
     def get_full_path(self, dynamic_path):
         static_path = img_destination_path
-        folder_path = os.path.join(static_path, dynamic_path)
+        folder_path = '{}{}'.format(static_path, dynamic_path)
         if not os.path.exists(folder_path):
             os.makedirs(folder_path)
 
@@ -46,12 +46,13 @@ class ImgHandler:
             draw = ImageDraw.Draw(img)
             font_ = ImageFont.truetype(self.font, 60, encoding="unic")
             draw.text(xy=(w/2, h/2), text=self.get_text(keyword), font=font_, anchor='mm', fill='black')
-            dynamic_path = img_path_web_relative.format(datetime.now().strftime('%Y/%m/%d/'))
+            dynamic_path = '{}/{}'.format(img_path_web_relative, datetime.now().strftime('%Y/%m/%d/'))
             filename = self.generate_filename(keyword)
             save_path = self.get_full_path(dynamic_path) + filename
             img.save(save_path)
-            
+
             if glob.glob(save_path):
+                logging.info('image saved at {}'.format(save_path))
                 return '{}{}'.format(dynamic_path, filename)
 
         except Exception as e:
@@ -59,5 +60,5 @@ class ImgHandler:
             return False
 
 # if __name__ == "__main__":
-#     imgh = ImgHandler()
-#     imgh.generate_images(keyword='Node.js应用程序在崩溃新启动')
+#     pass
+#     for debugging purpose only 
